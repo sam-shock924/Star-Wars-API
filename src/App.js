@@ -1,8 +1,10 @@
+import SearchBox from "./Components/SearchBox";
+
 function App() {
 	return (
 		<div className="App">
-			<h1>May the Force Be With You</h1>
-			<h2>Search Archives...</h2>
+			<h1>Character Archives</h1>
+			<SearchBox />
 		</div>
 	);
 }
