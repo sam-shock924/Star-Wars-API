@@ -1,22 +1,20 @@
 // import CharacterData from "./CharacterData";
-import Table from "react-bootstrap/Table";
-// import CharacterDatabase from "./CharacterDatabase";
+import Table from 'react-bootstrap/Table';
+import { useState } from 'react';
 
-const characterDataTable = () => {
+const CharacterDataTable = () => {
+	const [characterData, setCharacterData] = useState([]);
 	return (
 		<div>
-			<Table striped bordered hover className="characterDataTable">
+			<Table striped bordered hover className='characterDataTable'>
 				<thead>
 					<tr>
-						<th>
-							{/* <CharacterDatabase className="headers">headers</CharacterDatabase> */}
-						</th>
-						{/* <th>Name</th> */}
-						{/* <th>Birthday</th>
+						<th>Name</th>
+						<th>Birth Date</th>
 						<th>Height</th>
-						<th>Weight</th>
-						<th>Homeworld</th>
-						<th>Species</th> */}
+						<th>Mass</th>
+						<th>Home World</th>
+						<th>Species</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -27,4 +25,4 @@ const characterDataTable = () => {
 	);
 };
 
-export default characterDataTable;
+export default CharacterDataTable;

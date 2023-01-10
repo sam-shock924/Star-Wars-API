@@ -2,7 +2,7 @@ import axios from "axios";
 
 let characterData = "https://swapi.dev/api/people/";
 
-export function getCharacterData() {
+export default function getCharacterData() {
 	axios
 		.get(characterData)
 		.then((response) => {
