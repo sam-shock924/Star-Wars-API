@@ -1,9 +1,6 @@
-import CharacterData from './CharacterData';
 import Table from 'react-bootstrap/Table';
-import { useState } from 'react';
 
 const CharacterDataTable = () => {
-	// const [characterData, setCharacterData] = useState([]);
 	return (
 		<div>
 			<Table striped bordered hover className='characterDataTable'>

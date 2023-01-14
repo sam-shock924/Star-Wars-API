@@ -1,20 +1,21 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-let dataApi = 'https://swapi.dev/api/people/';
+const dataApi = 'https://swapi.dev/api/people/';
 
 export default function CharacterData({ data, setData }) {
 	useEffect(() => {
+		// const [chars, setChars] = useState([]);
 		axios
 			.get(dataApi)
 			.then((response) => {
 				console.log(response.data.results);
-				setData([response.data.results]);
+				// setChars(response.data);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-	});
+	}, []);
 
-	return <div></div>;
+	// return <div>{data}</div>;
 }
