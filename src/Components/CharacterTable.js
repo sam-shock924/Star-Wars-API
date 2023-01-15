@@ -35,4 +35,7 @@ const CharacterTable = ({ data, setData }) => {
 
 export default CharacterTable;
 
-//work on unique id keys for each td
+/* NOTES: 
+- work on unique id keys for each td
+- show BBY definition on hover for birth year
+*/

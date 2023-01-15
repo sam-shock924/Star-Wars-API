@@ -28,3 +28,8 @@ code {
 .characterDataTable {
   font-family: 'Libre Franklin', sans-serif;
 }
+
+/* show definition of BBY on hover */
+.character-birth-year:hover {
+
+}
