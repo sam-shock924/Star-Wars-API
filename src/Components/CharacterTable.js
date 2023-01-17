@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 const CharacterTable = ({ data, setData }) => {
 	const characterDataRow = data.map((character) => (
 		<>
-			<tr key={character.created}>
+			<tr>
 				<td>{character.name}</td>
 				<td>{character.birth_year}</td>
 				<td>{character.height}</td>
