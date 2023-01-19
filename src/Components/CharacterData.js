@@ -7,8 +7,11 @@ export default function CharacterData({ data, setData }) {
 	useEffect(() => {
 		axios
 			.get(dataApi)
-			.then((response) => console.log(response.data.results))
-			.then((response) => setData(response.data.results))
+			.then((response) => {
+				console.log(response.data.results);
+				return response.data.results;
+			})
+			.then((characters) => setData(characters))
 			.catch((error) => {
 				console.log(error);
 			});
