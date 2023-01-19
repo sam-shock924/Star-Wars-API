@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 
-const CharacterTable = ({ data, setData }) => {
+const CharacterTable = ({ data }) => {
 	const characterDataRow = data.map((character) => (
 		<>
 			<tr>
