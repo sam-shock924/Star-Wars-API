@@ -2,11 +2,12 @@ import SearchBox from './Components/SearchBox';
 import CharacterData from './Components/CharacterData';
 import CharacterTable from './Components/CharacterTable';
 import { useState } from 'react';
+import { Pagination } from './Components/Pagination';
 
 function App() {
 	const [data, setData] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
-	const dataPerPage = 5;
+	const dataPerPage = 15;
 
 	const lastPostIndex = currentPage * dataPerPage;
 	const firstPostIndex = lastPostIndex - dataPerPage;
@@ -19,6 +20,11 @@ function App() {
 			<SearchBox />
 			<CharacterData setData={setData} />
 			<CharacterTable data={currentData} />
+			<Pagination
+				totalPosts={data.length}
+				dataPerPage={dataPerPage}
+				setCurrentPage={setCurrentPage}
+			/>
 		</div>
 	);
 }
