@@ -5,8 +5,8 @@ const CharacterTable = ({ data }) => {
 		<tr key={index}>
 			<td>{character.name}</td>
 			<td>{character.birth_year}</td>
-			<td>{character.height}</td>
-			<td>{character.mass}</td>
+			<td>{character.height}cm</td>
+			<td>{character.mass}g</td>
 			<td>{character.homeworld}</td>
 			<td>{character.species}</td>
 		</tr>

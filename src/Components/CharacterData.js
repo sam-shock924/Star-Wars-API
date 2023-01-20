@@ -8,10 +8,9 @@ export default function CharacterData({ setData }) {
 		axios
 			.get(characterApiData)
 			.then((response) => {
-				console.log(response.data);
-				return response.data.results;
+				console.log(response.data.results);
+				return setData(response.data.results);
 			})
-			.then((characters) => setData(characters))
 			.catch((error) => {
 				console.log(error);
 			});
