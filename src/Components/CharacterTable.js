@@ -1,17 +1,15 @@
 import Table from 'react-bootstrap/Table';
 
 const CharacterTable = ({ data }) => {
-	const characterDataRow = data.map((character) => (
-		<>
-			<tr>
-				<td>{character.name}</td>
-				<td>{character.birth_year}</td>
-				<td>{character.height}</td>
-				<td>{character.mass}</td>
-				<td>{character.homeworld}</td>
-				<td>{character.species}</td>
-			</tr>
-		</>
+	const characterDataRow = data.map((character, index) => (
+		<tr key={index}>
+			<td>{character.name}</td>
+			<td>{character.birth_year}</td>
+			<td>{character.height}</td>
+			<td>{character.mass}</td>
+			<td>{character.homeworld}</td>
+			<td>{character.species}</td>
+		</tr>
 	));
 
 	return (
