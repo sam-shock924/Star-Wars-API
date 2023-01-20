@@ -1,12 +1,13 @@
 const SearchBox = () => {
 	return (
-		<div>
+		<div className='search-box'>
 			<input
-				autoComplete="on"
-				type="text"
-				placeholder="Search the archives..."
-				id="search"
+				autoComplete='on'
+				type='search'
+				placeholder='Search the archives...'
+				id='search'
 			/>
+			<button type='submit'>Search</button>
 		</div>
 	);
 };

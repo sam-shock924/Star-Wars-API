@@ -8,6 +8,7 @@ function App() {
 
 	return (
 		<div className='App'>
+			<img src='/img/title-logo.png' alt='' />
 			<h1 className='title'>Character Archives</h1>
 			<SearchBox />
 			<CharacterData data={data} setData={setData} />

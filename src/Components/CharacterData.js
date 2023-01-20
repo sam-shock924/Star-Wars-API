@@ -17,8 +17,3 @@ export default function CharacterData({ setData }) {
 			});
 	}, []);
 }
-
-/* NOTES: 
-- if a planet or species has a API url, how do I call to it? what form of `if` statement should I use? (see notes.txt)
-- 
-*/
