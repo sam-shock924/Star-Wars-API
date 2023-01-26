@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
 
-const CharacterTable = ({ data }) => {
-	const characterDataRow = data.map((character, index) => (
+const CharacterTable = ({planetData, data}) => {
+	const characterDataRow = data.map((character, planet, index) => (
 		<tr key={index}>
 			<td>{character.name}</td>
 			<td>{character.birth_year}</td>
@@ -32,7 +32,3 @@ const CharacterTable = ({ data }) => {
 };
 
 export default CharacterTable;
-
-/* NOTES: 
-- show BBY definition on hover for birth year
-*/
