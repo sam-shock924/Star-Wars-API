@@ -1,13 +1,12 @@
 import SearchBox from './Components/SearchBox';
-import CharacterData from './Components/CharacterData';
 import CharacterTable from './Components/CharacterTable';
-import PlanetData from './Components/PlanetData';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Pagination} from './Components/Pagination';
+import axios from 'axios';
 
 function App() {
 	const [data, setData] = useState([]);
-	const [planets, setPlanets] = useState([]);
+	// const [planets, setPlanets] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const dataPerPage = 5;
 
@@ -15,14 +14,29 @@ function App() {
 	const firstPostIndex = lastPostIndex - dataPerPage;
 	const currentData = data.slice(firstPostIndex, lastPostIndex);
 
+	useEffect(() => {
+		axios
+			.get('https://swapi.dev/api/people/')
+			.then((response) => {
+				console.log(response.data.results);
+				// create a for loop through each character.data
+				//make http request for planet/species
+				//update each character planet/species name
+				setData(response.data.results);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
+	//SEE NOTES.TXT
+
 	return (
 		<div className='App'>
 			<img src='/img/title-logo.png' alt='Star Wars' />
 			<h1 className='title'>Character Archives</h1>
 			<SearchBox />
-			<CharacterData setData={setData} />
-			<PlanetData data={currentData} setPlanets={setPlanets} />
-			<CharacterTable data={currentData} planetData={planets} />
+			<CharacterTable data={currentData} />
 			<Pagination
 				totalPosts={data.length}
 				dataPerPage={dataPerPage}
