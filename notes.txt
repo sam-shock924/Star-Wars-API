@@ -7,3 +7,96 @@
 	- it's one step closer to truly affording a newer car
 	- it's one step closer to moving out and being on your own again
 	- it's one step closer to being independent and successful
+
+Async / Await Study Notes:
+
+
+Synchronous code: runs one statement at a time (console.log() runs this way)
+
+Asynchronous code: code can start and finish at different times
+    - takes callback/parameter to run asynchronously 
+    
+NOTE: THIS IS USING THE .THEN METHOD!!! WHEN IMPLEMENTING, REFACTOR TO THE ASYNC/AWAIT METHOD
+
+when you return the response data (something like response.data[0].homeworld[0]), map through the results
+
+when you're creating multiple fetches, make sure to return something (a promise (`Promise.resolve()`)
+
+Async functions will always return a promise:
+    - If the function returns a value, the promise will be resolved with that value
+    - If the function throws an exception, or error, the promise will be rejected
+
+Await: can only be used inside of async functions;
+Awaiting a promise is "waiting for a resolved value, and storing that value in the const you use
+
+example: 
+
+async function getPlanet() {
+	const planet1 = await axios.get('url');
+}
+
+that async / await above is saying "hey, make this function a promise (async). oh, you want this assigned to something (const)? let's (await) for this promise to resolve, then store it. now your const is the value of that promise."
+
+Instead of writing:
+
+    function getPlanets() {
+        return axios.get('URL');
+    }
+    
+    getPlanets().then((res) => {
+        console.log(res.data);
+    });
+
+You can write:
+
+	async function getPlanets() {
+        const response = await axios.get('URL');
+        console.log(response.data);
+    }
+    
+    getPlanets();
+
+It's a lot simpler and easier to read!
+
+TRY /  CATCH: 
+
+	async function getPlanets() {
+       try {
+        const response = await axios.get('URL');
+        console.log(response.data);
+       } catch (err) {
+        console.log(err);
+       }
+   }
+    
+   getPlanets();
+
+In the above, you're telling the computer to try that code, and if that doesn't work, grab whatever error it gives, and show that instead. It's kinda like an if/else statement but for promises
+ 
+Parallel requests: If you dont need promise A before promise B, run them this way and it'll grab them together
+
+async function getPlanets() {
+	const promise1 = axios.get('url');
+	const promise2 = axios.get('url2');
+	const promise3 = axios.get('url3');
+	const planet1 = await promise1;
+	const planet2 = await promise2;
+	const planet3 = await promise3;
+
+	**or use**
+
+	const results = await Promise.all([promise1, promise2, promise3])
+}
+getPlanets();
+
+Sequential requests: If you need promise A to run before promise B does, run it this way. 
+
+async function getPlanets() {
+	const promise1 = await axios.get('url');
+	const promise2 = await axios.get('url2');
+	const promise3 = await axios.get('url3');
+}
+
+getPlanets();
+
+USE SEQUENTIAL REQUESTING
