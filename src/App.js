@@ -6,7 +6,6 @@ import axios from 'axios';
 
 function App() {
 	const [data, setData] = useState([]);
-	// const [planets, setPlanets] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const dataPerPage = 5;
 
@@ -14,19 +13,32 @@ function App() {
 	const firstPostIndex = lastPostIndex - dataPerPage;
 	const currentData = data.slice(firstPostIndex, lastPostIndex);
 
+	// useEffect(() => {
+	// 	axios
+	// 		.get('https://swapi.dev/api/people/')
+	// 		.then(({data}) => {
+	// 			console.log(data);
+	// 			// create a for loop through each character.data
+	// 			//make http request for planet/species
+	// 			//update each character planet/species name
+	// 			setData(data.results);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 		});
+	// }, []);
+
 	useEffect(() => {
-		axios
-			.get('https://swapi.dev/api/people/')
-			.then((response) => {
-				console.log(response.data.results);
-				// create a for loop through each character.data
-				//make http request for planet/species
-				//update each character planet/species name
-				setData(response.data.results);
-			})
-			.catch((error) => {
+		async function getCharacters() {
+			try {
+				const characterData = await axios.get('https://swapi.dev/api/people/');
+				console.log(characterData.data.results);
+				setData(characterData.data.results);
+			} catch (error) {
 				console.log(error);
-			});
+			}
+		}
+		getCharacters();
 	}, []);
 
 	//SEE NOTES.TXT
