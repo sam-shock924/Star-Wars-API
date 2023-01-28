@@ -1,13 +1,3 @@
-- So instead of using the .then method, Andy's recommending to research the async / await method and get the data that way
-- Apparently it's difficult to learn, but it's a lot easier to nest multiple requests and combine them later
-- Go through the videos / articles that Andy posted and then check out ALL of the Udemy / Youtube videos on async / await
-- Let's get cracking on it Friday morning after the Mazda dealer visit, and see if we can't get this working by Friday night! 
-- This shit is hard dude, it really is. But think of it this way: 
-	- it's hard now for sure, but if you crack down and focus on it, it's one step closer to getting that first job
-	- it's one step closer to truly affording a newer car
-	- it's one step closer to moving out and being on your own again
-	- it's one step closer to being independent and successful
-
 Async / Await Study Notes:
 
 
@@ -60,16 +50,16 @@ It's a lot simpler and easier to read!
 
 TRY /  CATCH: 
 
-	async function getPlanets() {
-       try {
-        const response = await axios.get('URL');
-        console.log(response.data);
-       } catch (err) {
-        console.log(err);
-       }
-   }
-    
-   getPlanets();
+    async function getPlanets() {
+        try {
+            const response = await axios.get('URL');
+            console.log(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    getPlanets();
 
 In the above, you're telling the computer to try that code, and if that doesn't work, grab whatever error it gives, and show that instead. It's kinda like an if/else statement but for promises
  
