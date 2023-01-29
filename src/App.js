@@ -6,7 +6,6 @@ import axios from 'axios';
 
 function App() {
 	const [data, setData] = useState([]);
-	const [planet, setPlanet] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const dataPerPage = 5;
 
@@ -19,23 +18,22 @@ function App() {
 			try {
 				const characterData = await axios.get('https://swapi.dev/api/people/');
 				console.log(characterData.data.results);
-				setData(characterData.data.results);
 
-				for (const planet of characterData.data.results) {
-					console.log(planet.homeworld);
-					const planetName = await axios.get(planet.homeworld);
-					console.log(planetName.data.name);
-					setPlanet(planetName.data.name);
+				for (const character of characterData.data.results) {
+					const planetName = await axios.get(character.homeworld);
+					character.homeworldName = planetName.data.name;
 				}
 
-				// const planetName = characterData.forEach((planet) => {
-				// 	axios.get(characterData.data.results[planet].homeworld);
-				// });
+				for (const character of characterData.data.results) {
+					const species = await axios.get(character.species);
+					if (species.data.name === undefined) {
+						character.species = 'Human';
+					} else {
+						character.species = species.data.name;
+					}
+				}
 
-				// const planetData = await axios.get(
-				// 	characterData.data.results[0].homeworld
-				// );
-				// console.log(planetName.data.name);
+				setData(characterData.data.results);
 			} catch (error) {
 				console.log(error);
 			}
@@ -48,7 +46,7 @@ function App() {
 			<img src='/img/title-logo.png' alt='Star Wars' />
 			<h1 className='title'>Character Archives</h1>
 			<SearchBox />
-			<CharacterTable planet={planet} data={currentData} />
+			<CharacterTable data={currentData} />
 			<Pagination
 				totalPosts={data.length}
 				dataPerPage={dataPerPage}

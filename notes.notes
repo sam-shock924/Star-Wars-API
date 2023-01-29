@@ -90,3 +90,7 @@ async function getPlanets() {
 getPlanets();
 
 USE SEQUENTIAL REQUESTING
+
+
+
+do I nest everything or should I run the initial data fetch, save that to the data, then map through that, fetch new data, then save that, and same with the species? 
