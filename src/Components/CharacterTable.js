@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 
-const CharacterTable = ({data}) => {
+const CharacterTable = ({data, loading}) => {
 	const characterDataRow = data.map((character, index) => (
 		<tr /*key={index}*/>
 			<td>{character.name}</td>
@@ -30,5 +30,4 @@ const CharacterTable = ({data}) => {
 		</div>
 	);
 };
-
 export default CharacterTable;

@@ -5,39 +5,49 @@ import {Pagination} from './Components/Pagination';
 import axios from 'axios';
 
 function App() {
+	const characterURL = 'https://swapi.dev/api/people/';
+	//state hooks
 	const [data, setData] = useState([]);
+	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
-	const dataPerPage = 5;
+	const [postsPerPage] = useState(10);
+	const [nextPage, setNextPage] = useState([]);
 
-	const lastPostIndex = currentPage * dataPerPage;
-	const firstPostIndex = lastPostIndex - dataPerPage;
+	//variables for pagination
+	const lastPostIndex = currentPage * postsPerPage;
+	const firstPostIndex = lastPostIndex - postsPerPage;
 	const currentData = data.slice(firstPostIndex, lastPostIndex);
+	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-	useEffect(() => {
-		async function getCharacters() {
-			try {
-				const characterData = await axios.get('https://swapi.dev/api/people/');
-				console.log(characterData.data.results);
+	async function getCharacters() {
+		try {
+			const characterData = await axios.get(characterURL);
+			console.log(characterData.data);
+			console.log(characterData.data.next);
 
-				for (const character of characterData.data.results) {
-					const planetName = await axios.get(character.homeworld);
-					character.homeworldName = planetName.data.name;
-				}
-
-				for (const character of characterData.data.results) {
-					const species = await axios.get(character.species);
-					if (species.data.name === undefined) {
-						character.species = 'Human';
-					} else {
-						character.species = species.data.name;
-					}
-				}
-
-				setData(characterData.data.results);
-			} catch (error) {
-				console.log(error);
+			for (const character of characterData.data.results) {
+				const planetName = await axios.get(character.homeworld);
+				character.homeworldName = planetName.data.name;
 			}
+
+			for (const character of characterData.data.results) {
+				const species = await axios.get(character.species);
+				if (species.data.name === undefined) {
+					character.species = 'Human';
+				} else {
+					character.species = species.data.name;
+				}
+			}
+
+			setData(characterData.data.results);
+			setNextPage(characterData.data.next);
+			// console.log(nextPage.data);
+		} catch (error) {
+			console.log(error);
+			console.log('Something went wrong...oops');
 		}
+	}
+	useEffect(() => {
 		getCharacters();
 	}, []);
 
@@ -48,9 +58,14 @@ function App() {
 			<SearchBox />
 			<CharacterTable data={currentData} />
 			<Pagination
+				getCharacters={getCharacters}
 				totalPosts={data.length}
-				dataPerPage={dataPerPage}
-				setCurrentPage={setCurrentPage}
+				dataPerPage={postsPerPage}
+				data={data}
+				setData={setData}
+				paginate={paginate}
+				nextPage={nextPage}
+				setNextPage={setNextPage}
 			/>
 		</div>
 	);
