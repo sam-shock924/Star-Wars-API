@@ -50,38 +50,28 @@ export const Pagination = ({
 
 	return (
 		<div>
-			{pageNumber.map((page, index) => {
+			{pageNumber.map((page) => {
 				return (
 					<div>
-						{/* <button
-							className='page-buttons'
-							key={index}
-							onClick={() => paginate(page)}
-						>
-							{page}
-						</button>
-						<button onClick={() => nextPage()} className='page-buttons'>
-							Next
-						</button> */}
-						<button id='1' className='page-buttons' onClick={getNewPage()}>
+						<button id={page} className='page-buttons' onClick={getNewPage}>
 							1
 						</button>
-						<button id={2} className='page-buttons'>
+						<button id={page} className='page-buttons' onClick={getNewPage}>
 							2
 						</button>
-						<button id={3} className='page-buttons'>
+						<button id={page} className='page-buttons'>
 							3
 						</button>
-						<button id={4} className='page-buttons'>
+						<button id={page} className='page-buttons'>
 							4
 						</button>
-						<button id={5} className='page-buttons'>
+						<button id={page} className='page-buttons'>
 							5
 						</button>
-						<button id={6} className='page-buttons'>
+						<button id={page} className='page-buttons'>
 							6
 						</button>
-						<button id={7} className='page-buttons'>
+						<button id={page} className='page-buttons'>
 							7
 						</button>
 					</div>
