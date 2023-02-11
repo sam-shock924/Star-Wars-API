@@ -5,13 +5,12 @@ import {Pagination} from './Components/Pagination';
 import axios from 'axios';
 
 function App() {
-	const characterURL = 'https://swapi.dev/api/people/';
 	//state hooks
 	const [data, setData] = useState([]);
 	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage] = useState(10);
-	const [nextPage, setNextPage] = useState([]);
+	// const [nextPage, setNextPage] = useState([]);
 
 	//variables for pagination
 	const lastPostIndex = currentPage * postsPerPage;
@@ -21,8 +20,8 @@ function App() {
 
 	async function getCharacters() {
 		try {
-			const characterData = await axios.get(characterURL);
-			console.log(characterData.data);
+			const characterData = await axios.get('https://swapi.dev/api/people/');
+			console.log(characterData.data.results);
 			console.log(characterData.data.next);
 
 			for (const character of characterData.data.results) {
@@ -40,13 +39,13 @@ function App() {
 			}
 
 			setData(characterData.data.results);
-			setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
+			// setNextPage(characterData.data.next);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
 		}
 	}
+
 	useEffect(() => {
 		getCharacters();
 	}, []);
@@ -58,14 +57,10 @@ function App() {
 			<SearchBox />
 			<CharacterTable data={currentData} />
 			<Pagination
-				getCharacters={getCharacters}
 				totalPosts={data.length}
 				dataPerPage={postsPerPage}
-				data={data}
 				setData={setData}
 				paginate={paginate}
-				nextPage={nextPage}
-				setNextPage={setNextPage}
 			/>
 		</div>
 	);
