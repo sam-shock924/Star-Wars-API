@@ -7,10 +7,10 @@ import axios from 'axios';
 function App() {
 	//state hooks
 	const [data, setData] = useState([]);
+	const [search, setSearch] = useState([]);
 	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage] = useState(10);
-	// const [nextPage, setNextPage] = useState([]);
 
 	//variables for pagination
 	const lastPostIndex = currentPage * postsPerPage;
@@ -39,7 +39,6 @@ function App() {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -54,7 +53,7 @@ function App() {
 		<div className='App'>
 			<img src='/img/title-logo.png' alt='Star Wars' />
 			<h1 className='title'>Character Archives</h1>
-			<SearchBox />
+			<SearchBox search={search} setSearch={setSearch} />
 			<CharacterTable data={currentData} />
 			<Pagination
 				totalPosts={data.length}
