@@ -11,7 +11,7 @@ function App() {
 	const [filterData, setFilterData] = useState([]);
 	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [postsPerPage] = useState(10);
+	const [postsPerPage] = useState(100);
 
 	//variables for pagination
 	const lastPostIndex = currentPage * postsPerPage;
