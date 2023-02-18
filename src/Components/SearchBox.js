@@ -1,9 +1,10 @@
 const SearchBox = ({
+	search,
 	setSearch,
 	data,
 	setData,
-	filteredData,
-	setFilteredData,
+	filterData,
+	setFilterData,
 }) => {
 	// const URLlist = [
 	// 	`https://swapi.dev/api/people/?page=1`,
@@ -26,12 +27,13 @@ const SearchBox = ({
 					.toLowerCase()
 					.includes(searchValue.toLowerCase());
 			});
-			console.log(searchValue);
-			setFilteredData(filteredData);
 			console.log(filteredData);
+			setSearch(filteredData);
+			console.log(search);
+			setFilterData(filteredData);
 		} else {
 			console.log(searchValue);
-			setFilteredData(data);
+			setFilterData(data);
 		}
 	};
 
@@ -42,10 +44,9 @@ const SearchBox = ({
 				type='search'
 				placeholder='Search the archives...'
 				id='search'
+				onChange={(e) => searchData(e.target.value)}
 			/>
-			<button type='submit' onClick={(e) => searchData(e.target.value)}>
-				Search
-			</button>
+			<button type='submit'>Search</button>
 		</div>
 	);
 };

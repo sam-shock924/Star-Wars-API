@@ -8,7 +8,7 @@ function App() {
 	//state hooks
 	const [data, setData] = useState([]);
 	const [search, setSearch] = useState('');
-	const [filteredData, setFilteredData] = useState([]);
+	const [filterData, setFilterData] = useState([]);
 	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage] = useState(10);
@@ -59,13 +59,13 @@ function App() {
 				setSearch={setSearch}
 				data={data}
 				setData={setData}
-				filteredData={filteredData}
-				setFilteredData={setFilteredData}
+				filterData={filterData}
+				setFilterData={setFilterData}
 			/>
 			<CharacterTable
 				data={currentData}
 				search={search}
-				filteredData={filteredData}
+				filterData={filterData}
 			/>
 			<Pagination
 				totalPosts={data.length}
