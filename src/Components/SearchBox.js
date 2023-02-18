@@ -1,7 +1,38 @@
-const SearchBox = ({search, setSearch}) => {
+const SearchBox = ({
+	setSearch,
+	data,
+	setData,
+	filteredData,
+	setFilteredData,
+}) => {
+	// const URLlist = [
+	// 	`https://swapi.dev/api/people/?page=1`,
+	// 	`https://swapi.dev/api/people/?page=2`,
+	// 	'https://swapi.dev/api/people/?page=3',
+	// 	'https://swapi.dev/api/people/?page=4',
+	// 	'https://swapi.dev/api/people/?page=5',
+	// 	'https://swapi.dev/api/people/?page=6',
+	// 	'https://swapi.dev/api/people/?page=7',
+	// 	'https://swapi.dev/api/people/?page=8',
+	// 	'https://swapi.dev/api/people/?page=9',
+	// ];
+
 	const searchData = (searchValue) => {
 		setSearch(searchValue);
-		console.log(searchValue);
+		if (searchValue !== '') {
+			const filteredData = data.filter((item) => {
+				return Object.values(item)
+					.join('')
+					.toLowerCase()
+					.includes(searchValue.toLowerCase());
+			});
+			console.log(searchValue);
+			setFilteredData(filteredData);
+			console.log(filteredData);
+		} else {
+			console.log(searchValue);
+			setFilteredData(data);
+		}
 	};
 
 	return (
@@ -11,9 +42,10 @@ const SearchBox = ({search, setSearch}) => {
 				type='search'
 				placeholder='Search the archives...'
 				id='search'
-				onChange={(e) => searchData(e.target.value)}
 			/>
-			<button type='submit'>Search</button>
+			<button type='submit' onClick={(e) => searchData(e.target.value)}>
+				Search
+			</button>
 		</div>
 	);
 };

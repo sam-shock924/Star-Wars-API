@@ -7,7 +7,8 @@ import axios from 'axios';
 function App() {
 	//state hooks
 	const [data, setData] = useState([]);
-	const [search, setSearch] = useState([]);
+	const [search, setSearch] = useState('');
+	const [filteredData, setFilteredData] = useState([]);
 	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage] = useState(10);
@@ -21,8 +22,8 @@ function App() {
 	async function getCharacters() {
 		try {
 			const characterData = await axios.get('https://swapi.dev/api/people/');
-			console.log(characterData.data.results);
-			console.log(characterData.data.next);
+			// console.log(characterData.data.results);
+			// console.log(characterData.data.next);
 
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
@@ -53,8 +54,19 @@ function App() {
 		<div className='App'>
 			<img src='/img/title-logo.png' alt='Star Wars' />
 			<h1 className='title'>Character Archives</h1>
-			<SearchBox search={search} setSearch={setSearch} />
-			<CharacterTable data={currentData} />
+			<SearchBox
+				search={search}
+				setSearch={setSearch}
+				data={data}
+				setData={setData}
+				filteredData={filteredData}
+				setFilteredData={setFilteredData}
+			/>
+			<CharacterTable
+				data={currentData}
+				search={search}
+				filteredData={filteredData}
+			/>
 			<Pagination
 				totalPosts={data.length}
 				dataPerPage={postsPerPage}

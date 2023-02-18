@@ -23,9 +23,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page1);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -41,8 +38,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -54,9 +49,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page2);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -72,8 +64,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -85,9 +75,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page3);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -103,8 +90,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -116,9 +101,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page4);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -134,8 +116,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -147,9 +127,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page5);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -165,8 +142,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -178,9 +153,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page6);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -196,8 +168,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -209,9 +179,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page7);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -227,8 +194,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -240,9 +205,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page8);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -258,8 +220,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -271,9 +231,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 		try {
 			const characterData = await axios.get(page9);
 
-			console.log(characterData.data);
-			console.log(characterData.data.next);
-
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
 				character.homeworldName = planetName.data.name;
@@ -289,8 +246,6 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 			}
 
 			setData(characterData.data.results);
-			// setNextPage(characterData.data.next);
-			// console.log(nextPage.data);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
