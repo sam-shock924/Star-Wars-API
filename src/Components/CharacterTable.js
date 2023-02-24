@@ -3,6 +3,17 @@ import Table from 'react-bootstrap/Table';
 const CharacterTable = ({data, loading, search, filterData}) => {
 	let characterDataRow = null;
 
+	// const characterDataRow = data.map((character, index) => (
+	// 	<tr /*key={index}*/>
+	// 		<td>{character.name}</td>
+	// 		<td>{character.birth_year}</td>
+	// 		<td>{character.height}cm</td>
+	// 		<td>{character.mass}g</td>
+	// 		<td>{character.homeworldName}</td>
+	// 		<td>{character.species}</td>
+	// 	</tr>
+	// ));
+
 	// eslint-disable-next-line no-lone-blocks
 	{
 		search.length > 1

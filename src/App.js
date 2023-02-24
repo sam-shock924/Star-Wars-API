@@ -12,6 +12,7 @@ function App() {
 	// const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [postsPerPage] = useState(100);
+	const [page, setPage] = useState(1);
 
 	//variables for pagination
 	const lastPostIndex = currentPage * postsPerPage;
@@ -23,7 +24,6 @@ function App() {
 		try {
 			const characterData = await axios.get('https://swapi.dev/api/people/');
 			// console.log(characterData.data.results);
-			// console.log(characterData.data.next);
 
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
@@ -61,12 +61,10 @@ function App() {
 				setData={setData}
 				filterData={filterData}
 				setFilterData={setFilterData}
+				page={page}
+				setPage={setPage}
 			/>
-			<CharacterTable
-				data={currentData}
-				search={search}
-				filterData={filterData}
-			/>
+			<CharacterTable data={data} search={search} filterData={filterData} />
 			<Pagination
 				totalPosts={data.length}
 				dataPerPage={postsPerPage}
