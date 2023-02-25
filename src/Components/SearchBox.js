@@ -1,14 +1,8 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
-const SearchBox = ({
-	search,
-	setSearch,
-	data,
-	setData,
-	filterData,
-	setFilterData,
-}) => {
+const SearchBox = ({data, setData, filterData, setFilterData}) => {
+	const [search, setSearch] = useState('');
 	// const searchData = (searchValue) => {
 	// 	setSearch(searchValue);
 	// 	if (searchValue !== '') {
