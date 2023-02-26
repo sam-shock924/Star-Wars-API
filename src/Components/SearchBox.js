@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
-const SearchBox = ({data, setData, filterData, setFilterData}) => {
+const SearchBox = ({data, setData}) => {
 	const [search, setSearch] = useState('');
 	// const searchData = (searchValue) => {
 	// 	setSearch(searchValue);
@@ -28,15 +28,10 @@ const SearchBox = ({data, setData, filterData, setFilterData}) => {
 	// 	);
 	// }
 
-	const searchData = (searchValue) => {
-		setSearch(searchValue);
-		console.log(searchValue);
-	};
-
-	// async function findCharacter(searchData) {
+	// async function findCharacter(search) {
 	// 	try {
 	// 		const searchedCharacter = await axios.get(
-	// 			`https://swapi.dev/api/people/?search=${searchData}`
+	// 			`https://swapi.dev/api/people/?search=${search}`
 	// 		);
 	// 		setData(searchedCharacter);
 	// 		console.log(searchedCharacter);
@@ -44,11 +39,6 @@ const SearchBox = ({data, setData, filterData, setFilterData}) => {
 	// 		console.log(err);
 	// 	}
 	// }
-
-	// findCharacter();
-	// useEffect(() => {
-	// 	findCharacter();
-	// }, []);
 
 	// const searchData = (searchValue) => {
 	// 	setSearch(searchValue);
@@ -66,6 +56,11 @@ const SearchBox = ({data, setData, filterData, setFilterData}) => {
 	// 	}
 	// 	console.log(searchValue);
 	// };
+
+	const searchData = (searchValue) => {
+		console.log(searchValue);
+		setSearch(searchValue);
+	};
 
 	return (
 		<div className='search-box'>

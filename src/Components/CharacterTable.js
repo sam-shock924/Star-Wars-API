@@ -12,29 +12,6 @@ const CharacterTable = ({data}) => {
 		</tr>
 	));
 
-	// eslint-disable-next-line no-lone-blocks
-	// {
-	// 	search.length > 1
-	// 		? (characterDataRow = filterData.map((character, index) => (
-	// 				<tr /*key={index}*/>
-	// 					<td>{character.name}</td>
-	// 					<td>{character.birth_year}</td>
-	// 					<td>{character.height}cm</td>
-	// 					<td>{character.mass}g</td>
-	// 					<td>{character.homeworldName}</td>
-	// 					<td>{character.species}</td>
-	// 				</tr>
-	// 		  )))
-	// 		: (characterDataRow = data.map((character, index) => (
-	// 				<tr /*key={index}*/>
-	// 					<td>{character.name}</td>
-	// 					<td>{character.birth_year}</td>
-	// 					<td>{character.height}cm</td>
-	// 					<td>{character.mass}g</td>
-	// 					<td>{character.homeworldName}</td>
-	// 					<td>{character.species}</td>
-	// 				</tr>
-	// 		  )));
 	return (
 		<div>
 			<Table striped bordered hover className='characterDataTable'>

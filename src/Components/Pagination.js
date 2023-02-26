@@ -1,12 +1,6 @@
 import axios from 'axios';
 
-export const Pagination = ({setData, totalPosts, dataPerPage}) => {
-	let pageNumber = [];
-
-	for (let i = 1; i <= Math.ceil(totalPosts / dataPerPage); i++) {
-		pageNumber.push(i);
-	}
-
+export const Pagination = ({setData}) => {
 	const page1 = `https://swapi.dev/api/people/?page=1`;
 	const page2 = `https://swapi.dev/api/people/?page=2`;
 	const page3 = 'https://swapi.dev/api/people/?page=3';
@@ -254,39 +248,33 @@ export const Pagination = ({setData, totalPosts, dataPerPage}) => {
 
 	return (
 		<div>
-			{pageNumber.map((page) => {
-				return (
-					<div>
-						<button id={page} className='page-buttons' onClick={newPage1}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage2}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage3}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage4}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage5}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage6}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage7}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage8}>
-							{page++}
-						</button>
-						<button id={page} className='page-buttons' onClick={newPage9}>
-							{page++}
-						</button>
-					</div>
-				);
-			})}
+			<button className='page-buttons' onClick={newPage1}>
+				1
+			</button>
+			<button className='page-buttons' onClick={newPage2}>
+				2
+			</button>
+			<button className='page-buttons' onClick={newPage3}>
+				3
+			</button>
+			<button className='page-buttons' onClick={newPage4}>
+				4
+			</button>
+			<button className='page-buttons' onClick={newPage5}>
+				5
+			</button>
+			<button className='page-buttons' onClick={newPage6}>
+				6
+			</button>
+			<button className='page-buttons' onClick={newPage7}>
+				7
+			</button>
+			<button className='page-buttons' onClick={newPage8}>
+				8
+			</button>
+			<button className='page-buttons' onClick={newPage9}>
+				9
+			</button>
 		</div>
 	);
 };
