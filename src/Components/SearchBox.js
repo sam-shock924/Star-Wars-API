@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 const SearchBox = ({setData}) => {
 	const [search, setSearch] = useState('');
@@ -32,10 +32,6 @@ const SearchBox = ({setData}) => {
 		}
 	}
 
-	useEffect(() => {
-		searchCharacter();
-	}, [search]);
-
 	return (
 		<div className='search-box'>
 			<input
@@ -45,7 +41,9 @@ const SearchBox = ({setData}) => {
 				id='search'
 				onChange={(e) => searchData(e.target.value)}
 			/>
-			<button type='submit'>Search</button>
+			<button type='submit' onClick={searchCharacter}>
+				Search
+			</button>
 		</div>
 	);
 };
