@@ -5,14 +5,11 @@ import {Pagination} from './Components/Pagination';
 import axios from 'axios';
 
 function App() {
-	//state hooks
 	const [data, setData] = useState([]);
-	// const [loading, setLoading] = useState(false);
 
 	async function getCharacters() {
 		try {
 			const characterData = await axios.get('https://swapi.dev/api/people/');
-			// console.log(characterData.data.results);
 
 			for (const character of characterData.data.results) {
 				const planetName = await axios.get(character.homeworld);
@@ -43,7 +40,7 @@ function App() {
 		<div className='App'>
 			<img src='/img/title-logo.png' alt='Star Wars' />
 			<h1 className='title'>Character Archives</h1>
-			<SearchBox data={data} setData={setData} />
+			<SearchBox setData={setData} />
 			<CharacterTable data={data} />
 			<Pagination setData={setData} />
 		</div>

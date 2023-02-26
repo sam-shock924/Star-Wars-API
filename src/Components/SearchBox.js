@@ -1,66 +1,40 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
-const SearchBox = ({data, setData}) => {
+const SearchBox = ({setData}) => {
 	const [search, setSearch] = useState('');
-	// const searchData = (searchValue) => {
-	// 	setSearch(searchValue);
-	// 	if (searchValue !== '') {
-	// 		const filteredData = data.filter((item) => {
-	// 			return Object.values(item)
-	// 				.join(' ')
-	// 				.toLowerCase()
-	// 				.includes(searchValue.toLowerCase());
-	// 		});
-	// 		console.log(filteredData);
-	// 		setSearch(filteredData);
-	// 		console.log(search);
-	// 		setFilterData(filteredData);
-	// 	} else {
-	// 		console.log(searchValue);
-	// 		setFilterData(data);
-	// 	}
-	// };
-
-	// async function findCharacter() {
-	// 	const searchedCharacter = await axios.get(
-	// 		`https://swapi.dev/api/people/?search=${searchValue}`
-	// 	);
-	// }
-
-	// async function findCharacter(search) {
-	// 	try {
-	// 		const searchedCharacter = await axios.get(
-	// 			`https://swapi.dev/api/people/?search=${search}`
-	// 		);
-	// 		setData(searchedCharacter);
-	// 		console.log(searchedCharacter);
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// }
-
-	// const searchData = (searchValue) => {
-	// 	setSearch(searchValue);
-	// 	// findCharacter();
-	// 	async function findCharacter() {
-	// 		const searchedCharacter = await axios.get(
-	// 			`https://swapi.dev/api/people/?search=${searchValue}`
-	// 		);
-	// 		console.log(searchedCharacter);
-	// 	}
-	// 	if (searchValue !== '') {
-	// 		findCharacter();
-	// 	} else {
-	// 		return;
-	// 	}
-	// 	console.log(searchValue);
-	// };
+	const searchURL = 'https://swapi.dev/api/people/?search=';
 
 	const searchData = (searchValue) => {
 		console.log(searchValue);
 		setSearch(searchValue);
 	};
+
+	async function searchCharacter() {
+		try {
+			const characterSearch = await axios.get(`${searchURL}+${search}`);
+			for (const character of characterSearch.data.results) {
+				const planetName = await axios.get(character.homeworld);
+				character.homeworldName = planetName.data.name;
+			}
+			for (const character of characterSearch.data.results) {
+				const species = await axios.get(character.species);
+				if (species.data.name === undefined) {
+					character.species = 'Human';
+				} else {
+					character.species = species.data.name;
+				}
+			}
+			setData(characterSearch.data.results);
+			console.log(characterSearch);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	useEffect(() => {
+		searchCharacter();
+	}, [search]);
 
 	return (
 		<div className='search-box'>
