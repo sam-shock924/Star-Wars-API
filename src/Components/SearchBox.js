@@ -9,6 +9,14 @@ const SearchBox = ({setData}) => {
 		setSearch(searchValue);
 	};
 
+	function checkInput(e) {
+		if (e.target.value === '') {
+			searchData('');
+		} else {
+			searchData(e.target.value);
+		}
+	}
+
 	async function searchCharacter() {
 		try {
 			const characterSearch = await axios.get(`${searchURL}+${search}`);
@@ -37,7 +45,7 @@ const SearchBox = ({setData}) => {
 				type='search'
 				placeholder='Search the archives...'
 				id='search'
-				onChange={(e) => searchData(e.target.value)}
+				onChange={checkInput}
 			/>
 			<button type='submit' onClick={searchCharacter}>
 				Search
