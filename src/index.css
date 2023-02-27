@@ -27,6 +27,12 @@ img {
   margin-right: auto;
 }
 
+#pagination-buttons {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .search-box {
   padding: 2em;
   display: flex;
@@ -87,7 +93,3 @@ button:hover {
   text-align: center;
 }
 
-/* show definition of BBY on hover */
-.character-birth-year:hover {
-
-}

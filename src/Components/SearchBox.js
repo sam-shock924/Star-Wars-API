@@ -6,7 +6,6 @@ const SearchBox = ({setData}) => {
 	const searchURL = 'https://swapi.dev/api/people/?search=';
 
 	const searchData = (searchValue) => {
-		console.log(searchValue);
 		setSearch(searchValue);
 	};
 
@@ -26,7 +25,6 @@ const SearchBox = ({setData}) => {
 				}
 			}
 			setData(characterSearch.data.results);
-			console.log(characterSearch);
 		} catch (err) {
 			console.log(err);
 		}

@@ -247,7 +247,10 @@ export const Pagination = ({setData}) => {
 	}
 
 	return (
-		<div>
+		<div
+			id='pagination-buttons'
+			className='pagination justify-content-sm-center'
+		>
 			<button className='page-buttons' onClick={newPage1}>
 				1
 			</button>
