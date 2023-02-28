@@ -6,6 +6,7 @@ import axios from 'axios';
 
 function App() {
 	const [data, setData] = useState([]);
+	const [baseData, setBaseData] = useState([]);
 
 	async function getCharacters() {
 		try {
@@ -26,6 +27,8 @@ function App() {
 			}
 
 			setData(characterData.data.results);
+			setBaseData(characterData.data.results);
+			console.log(baseData);
 		} catch (error) {
 			console.log(error);
 			console.log('Something went wrong...oops');
@@ -40,7 +43,12 @@ function App() {
 		<div className='App'>
 			<img src='/img/title-logo.png' alt='Star Wars' />
 			<h1 className='title'>Character Archives</h1>
-			<SearchBox setData={setData} />
+			<SearchBox
+				setData={setData}
+				data={data}
+				setBaseData={setBaseData}
+				baseData={baseData}
+			/>
 			<CharacterTable data={data} />
 			<Pagination setData={setData} />
 		</div>

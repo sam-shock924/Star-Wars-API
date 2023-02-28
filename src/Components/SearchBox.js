@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState} from 'react';
 
-const SearchBox = ({setData}) => {
+const SearchBox = ({baseData, setData}) => {
 	const [search, setSearch] = useState('');
 	const searchURL = 'https://swapi.dev/api/people/?search=';
 
@@ -10,14 +10,14 @@ const SearchBox = ({setData}) => {
 	};
 
 	function checkInput(e) {
-		if (e.target.value === '') {
-			searchData('');
-		} else {
+		if (e.target.value !== '') {
 			searchData(e.target.value);
+		} else if (e.target.value === '') {
+			setData(baseData);
 		}
 	}
 
-	async function searchCharacter(searchData) {
+	async function searchCharacter() {
 		try {
 			const characterSearch = await axios.get(`${searchURL}+${search}`);
 			for (const character of characterSearch.data.results) {
