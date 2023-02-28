@@ -17,7 +17,7 @@ const SearchBox = ({setData}) => {
 		}
 	}
 
-	async function searchCharacter() {
+	async function searchCharacter(searchData) {
 		try {
 			const characterSearch = await axios.get(`${searchURL}+${search}`);
 			for (const character of characterSearch.data.results) {
